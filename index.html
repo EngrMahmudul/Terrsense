@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TerraSense | Smart Nursery & AI Plant Care</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        /* Custom Tailwind Configuration - Nature/Tech Theme */
+        :root {
+            --color-primary: #0D9488; /* Teal-600 (Tech/Nature) */
+            --color-secondary: #F59E0B; /* Amber-500 (Growth/Sunlight) */
+            --color-background: #F0FDF4; /* Green-50 (Very Light Background) */
+            --color-text: #064E3B; /* Emerald-900 (Dark Green Text) */
+            --color-surface: #FFFFFF; /* Pure White for cards */
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--color-background);
+            color: var(--color-text);
+            /* Soft blur effect on background */
+            position: relative;
+            overflow-x: hidden;
+            background-image: radial-gradient(circle at 100% 100%, #10b98115, transparent 50%),
+                              radial-gradient(circle at 0% 0%, #0d948815, transparent 50%);
+            background-repeat: no-repeat;
+        }
+        
+        .section-header {
+            color: var(--color-text);
+            border-bottom: 2px solid var(--color-primary);
+            padding-bottom: 0.5rem;
+        }
+
+        .cta-button {
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(13, 148, 136, 0.5); /* Shadow using primary color */
+        }
+        .feature-card {
+            transition: all 0.3s ease-in-out;
+            border: 2px solid transparent;
+        }
+        .feature-card:hover {
+            transform: scale(1.02);
+            border-color: var(--color-primary);
+            box-shadow: 0 15px 30px rgba(6, 78, 59, 0.1); /* Subtle dark green shadow */
+        }
+
+        /* Focus styles for input elements */
+        input:focus, textarea:focus, select:focus {
+            border-color: var(--color-primary) !important;
+            box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.3) !important;
+        }
+
+        /* Responsive Hero Image Placeholder */
+        .hero-image {
+            background-image: url('https://placehold.co/800x600/10B981/ffffff?text=Smart+Nursery+Tech');
+            background-size: cover;
+            background-position: center;
+            border-radius: 1.5rem;
+        }
+    </style>
+</head>
+<body class="min-h-screen antialiased">
+    
+    <!-- Header & Navigation -->
+    <header class="sticky top-0 z-50 bg-[var(--color-background)]/90 backdrop-blur-md shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="#" class="text-3xl font-extrabold flex items-center text-teal-600">
+                <i data-lucide="leaf" class="w-8 h-8 mr-2 text-green-600"></i> TerraSense
+            </a>
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex space-x-8">
+                <a href="#detection" class="text-sm font-medium text-slate-700 hover:text-teal-600 transition duration-150">AI Detection</a>
+                <a href="#sales" class="text-sm font-medium text-slate-700 hover:text-teal-600 transition duration-150">Plant Services</a>
+                <a href="#support" class="text-sm font-medium text-slate-700 hover:text-teal-600 transition duration-150">Chatbot & Guide</a>
+                <a href="#contact" class="text-sm font-medium text-slate-700 hover:text-teal-600 transition duration-150">Contact</a>
+            </nav>
+            <!-- Mobile Menu Button (Icon only) -->
+            <button id="mobile-menu-btn" class="md:hidden text-slate-700 focus:outline-none">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+        </div>
+        <!-- Mobile Menu (Hidden by default) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-slate-50/95">
+            <nav class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#detection" class="block px-3 py-2 rounded-md text-base font-medium text-slate-900 hover:bg-teal-100">AI Detection</a>
+                <a href="#sales" class="block px-3 py-2 rounded-md text-base font-medium text-slate-900 hover:bg-teal-100">Plant Services</a>
+                <a href="#support" class="block px-3 py-2 rounded-md text-base font-medium text-slate-900 hover:bg-teal-100">Chatbot & Guide</a>
+                <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium text-slate-900 hover:bg-teal-100">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-24">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <!-- Text Content -->
+                <div class="text-center lg:text-left">
+                    <span class="inline-block px-4 py-1 text-sm font-semibold rounded-full bg-amber-500/20 text-amber-600 mb-4">
+                        Grow Smarter, Not Harder
+                    </span>
+                    <h1 class="text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight mb-6 leading-tight text-teal-900">
+                        The Future of <span class="text-teal-600">Smart Nursery</span> Management
+                    </h1>
+                    <p class="mt-4 max-w-xl mx-auto lg:mx-0 text-xl text-green-800/80">
+                        TerraSense delivers cutting-edge AI detection, seamless plant services, and real-time gardening support, ensuring optimal health for every leaf.
+                    </p>
+                    <div class="mt-10 flex flex-col sm:flex-row justify-center lg:justify-start space-y-4 sm:space-y-0 sm:space-x-4">
+                        <a href="#detection" class="cta-button inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-xl text-white bg-teal-600 hover:bg-teal-700 shadow-lg shadow-teal-500/50">
+                            Detect Plant Diseases <i data-lucide="scan" class="w-5 h-5 ml-2"></i>
+                        </a>
+                        <a href="#sales" class="cta-button inline-flex items-center justify-center px-8 py-3 border border-teal-600 text-base font-medium rounded-xl text-teal-600 bg-white hover:bg-teal-50">
+                            Explore Services
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Mock Image/Visual -->
+                <div class="hidden lg:block h-96 w-full hero-image shadow-2xl shadow-teal-700/30">
+                    <!-- Placeholder content is set via CSS background image and text in style block -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Overview Section -->
+        <section id="features" class="py-20 bg-white shadow-inner">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-4xl font-bold text-center mb-16 section-header mx-auto w-fit">
+                    Core TerraSense Capabilities
+                </h2>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+
+                    <!-- Feature 1: AI Disease Detection -->
+                    <div class="feature-card p-6 bg-green-50 rounded-xl shadow-lg border-teal-300">
+                        <i data-lucide="microscope" class="w-10 h-10 text-teal-600 mb-4"></i>
+                        <h3 class="text-xl font-semibold mb-3 text-teal-900">AI Disease Detection</h3>
+                        <p class="text-green-800/80">
+                            Upload a photo and get instant diagnosis and personalized treatment plans for over 500 plant diseases with 95%+ accuracy.
+                        </p>
+                    </div>
+
+                    <!-- Feature 2: Smart Commerce (Crypto/Fiat) -->
+                    <div class="feature-card p-6 bg-green-50 rounded-xl shadow-lg border-teal-300">
+                        <i data-lucide="wallet" class="w-10 h-10 text-amber-600 mb-4"></i>
+                        <h3 class="text-xl font-semibold mb-3 text-teal-900">Flexible Plant Services</h3>
+                        <p class="text-green-800/80">
+                            Purchase professional nursery consultation, seed packs, and custom nutrient blends using both traditional fiat and cryptocurrency payments.
+                        </p>
+                    </div>
+
+                    <!-- Feature 3: AI Chatbot -->
+                    <div class="feature-card p-6 bg-green-50 rounded-xl shadow-lg border-teal-300">
+                        <i data-lucide="bot" class="w-10 h-10 text-teal-600 mb-4"></i>
+                        <h3 class="text-xl font-semibold mb-3 text-teal-900">24/7 AI Gardener Chat</h3>
+                        <p class="text-green-800/80">
+                            Get instant answers to your complex gardening questions. Our AI chatbot is trained on decades of horticultural expertise.
+                        </p>
+                    </div>
+
+                    <!-- Feature 4: Gardening Guide -->
+                    <div class="feature-card p-6 bg-green-50 rounded-xl shadow-lg border-teal-300">
+                        <i data-lucide="book-open-text" class="w-10 h-10 text-amber-600 mb-4"></i>
+                        <h3 class="text-xl font-semibold mb-3 text-teal-900">Real-Life Guides</h3>
+                        <p class="text-green-800/80">
+                            Access a curated, ever-expanding library of expert guides, video tutorials, and planting calendars for successful gardening.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- AI Disease Detection System Mockup -->
+        <section id="detection" class="py-20 bg-green-50">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h2 class="text-3xl font-bold mb-4 text-teal-900">Instant Disease Diagnosis</h2>
+                <p class="text-lg text-green-800/80 mb-8">
+                    Upload an image of a leaf or plant for immediate analysis and suggested care steps.
+                </p>
+                
+                <div class="bg-white p-8 rounded-2xl shadow-2xl border-2 border-teal-300/50">
+                    <div id="detection-area" class="border-4 border-dashed border-teal-400 p-12 rounded-xl bg-slate-50/50 hover:bg-slate-100 transition duration-300 cursor-pointer">
+                        <i data-lucide="cloud-upload" class="w-12 h-12 text-teal-500 mx-auto mb-3"></i>
+                        <p class="text-slate-600 font-medium">Drag & Drop Image Here, or Click to Upload</p>
+                        <input type="file" id="plant-image-upload" accept="image/*" class="hidden">
+                    </div>
+
+                    <div id="detection-result" class="mt-6 p-4 border-l-4 border-amber-500 bg-amber-50/50 text-left hidden">
+                        <p class="font-bold text-lg text-amber-700 mb-2">Detection Result (Mock)</p>
+                        <p class="text-sm text-amber-900">
+                            <span class="font-semibold">Diagnosis:</span> Early stage Powdery Mildew detected (85% confidence).
+                        </p>
+                        <p class="text-sm text-amber-900 mt-1">
+                            <span class="font-semibold">Recommendation:</span> Isolate the plant. Apply a natural fungicide (e.g., neem oil) solution every 7 days.
+                        </p>
+                    </div>
+
+                    <button id="detect-button" class="mt-6 cta-button w-full py-3 bg-teal-600 text-white font-bold rounded-xl hover:bg-teal-700 shadow-md shadow-teal-500/50 disabled:opacity-50" disabled>
+                        Analyze Image
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services & Sales Section (Crypto/Fiat) -->
+        <section id="sales" class="py-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-4xl font-bold text-center mb-12 section-header mx-auto w-fit">
+                    Nursery Services & Multi-Currency Payments
+                </h2>
+                <p class="text-center max-w-3xl mx-auto text-xl text-green-800/80 mb-16">
+                    Enroll in our premium care services. Pay with the flexibility of both traditional bank transfers and modern cryptocurrencies.
+                </p>
+
+                <div class="grid md:grid-cols-2 gap-12 items-start">
+                    
+                    <!-- Pricing Table -->
+                    <div class="space-y-6">
+                        <!-- Plan 1 -->
+                        <div class="bg-white p-6 rounded-xl shadow-lg border border-teal-200">
+                            <h3 class="text-2xl font-bold text-teal-700">Premium Care Subscription</h3>
+                            <p class="text-sm text-slate-500 mb-4">Best for commercial growers and serious hobbyists.</p>
+                            <p class="text-3xl font-extrabold text-teal-900">$49 <span class="text-base font-normal text-slate-500">/ month</span></p>
+                            <ul class="mt-4 space-y-2 text-green-800/90">
+                                <li class="flex items-start"><i data-lucide="award" class="w-5 h-5 text-amber-500 mr-2 flex-shrink-0 mt-0.5"></i> Priority AI Detection (3-second response)</li>
+                                <li class="flex items-start"><i data-lucide="award" class="w-5 h-5 text-amber-500 mr-2 flex-shrink-0 mt-0.5"></i> Unlimited Expert Chatbot Access</li>
+                                <li class="flex items-start"><i data-lucide="award" class="w-5 h-5 text-amber-500 mr-2 flex-shrink-0 mt-0.5"></i> Monthly 1-on-1 Consulting Video Call</li>
+                                <li class="flex items-start"><i data-lucide="award" class="w-5 h-5 text-amber-500 mr-2 flex-shrink-0 mt-0.5"></i> Access to Exclusive Guides & Data</li>
+                            </ul>
+                            <button class="mt-6 w-full py-2 bg-amber-600 text-white rounded-lg font-semibold hover:bg-amber-700 transition">
+                                Subscribe Now
+                            </button>
+                        </div>
+                        
+                        <!-- Plan 2 -->
+                        <div class="bg-white p-6 rounded-xl shadow-lg border border-teal-200">
+                            <h3 class="text-2xl font-bold text-teal-700">Basic Diagnostics Pack</h3>
+                            <p class="text-sm text-slate-500 mb-4">Perfect for quick, one-time diagnosis needs.</p>
+                            <p class="text-3xl font-extrabold text-teal-900">$10 <span class="text-base font-normal text-slate-500">/ 5 credits</span></p>
+                            <ul class="mt-4 space-y-2 text-green-800/90">
+                                <li class="flex items-start"><i data-lucide="dot" class="w-5 h-5 text-teal-500 mr-2 flex-shrink-0 mt-0.5"></i> 5 AI Detection Credits</li>
+                                <li class="flex items-start"><i data-lucide="dot" class="w-5 h-5 text-teal-500 mr-2 flex-shrink-0 mt-0.5"></i> Standard Chatbot Access</li>
+                            </ul>
+                            <button class="mt-6 w-full py-2 bg-teal-600 text-white rounded-lg font-semibold hover:bg-teal-700 transition">
+                                Buy Credits
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Payment Details -->
+                    <div class="bg-white p-8 rounded-2xl shadow-2xl border-2 border-amber-300">
+                        <h4 class="text-2xl font-bold mb-4 text-teal-900 flex items-center">
+                            <i data-lucide="shield-check" class="w-6 h-6 text-green-600 mr-2"></i> Accepted Payment Methods
+                        </h4>
+                        <p class="text-green-800/80 mb-6">
+                            We use secure gateways to ensure every transaction, whether traditional or decentralized, is safe and instantaneous.
+                        </p>
+                        
+                        <div class="space-y-4">
+                            <!-- Fiat Block -->
+                            <div class="p-4 rounded-lg bg-green-50 border border-slate-200">
+                                <h5 class="font-semibold text-xl text-teal-800 mb-2 flex items-center">
+                                    <i data-lucide="banknote" class="w-5 h-5 mr-2 text-green-600"></i> Fiat Currencies (Traditional)
+                                </h5>
+                                <div class="flex space-x-4 text-3xl text-slate-700">
+                                    <i data-lucide="credit-card" title="Credit Card" class="w-8 h-8 text-blue-600"></i>
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal" class="w-8 h-8" style="filter: none;">
+                                    <span class="text-xl font-bold pt-1 text-slate-500">USD, EUR, GBP</span>
+                                </div>
+                            </div>
+
+                            <!-- Crypto Block -->
+                            <div class="p-4 rounded-lg bg-green-50 border border-slate-200">
+                                <h5 class="font-semibold text-xl text-teal-800 mb-2 flex items-center">
+                                    <i data-lucide="scan-line" class="w-5 h-5 mr-2 text-amber-600"></i> Decentralized Currencies (Crypto)
+                                </h5>
+                                <div class="flex space-x-4 text-3xl text-slate-700 items-center">
+                                    <span title="Bitcoin" class="text-amber-600 font-bold text-3xl">₿</span>
+                                    <span title="Ethereum" class="text-slate-700 font-bold text-3xl">Ξ</span>
+                                    <i data-lucide="dices" class="w-8 h-8 text-teal-600" title="Stablecoins & Altcoins"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Guide and Chatbot Section -->
+        <section id="support" class="py-20 bg-green-50 shadow-inner">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-4xl font-bold text-center mb-16 section-header mx-auto w-fit">
+                    AI Chatbot & Expert Guides
+                </h2>
+
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    
+                    <!-- Real-Life Gardening Guide -->
+                    <div class="p-8 bg-white rounded-2xl shadow-xl border border-teal-300/50">
+                        <i data-lucide="pencil-ruler" class="w-10 h-10 text-teal-600 mb-4"></i>
+                        <h3 class="text-2xl font-bold mb-3 text-teal-900">Your Personal Gardening Library</h3>
+                        <p class="text-green-800/80 mb-4">
+                            From basic soil composition to advanced hydroponics, our expertly crafted guides provide actionable, easy-to-follow advice for gardeners of all levels.
+                        </p>
+                        <ul class="space-y-2 text-green-800/90">
+                            <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 text-amber-500 mr-2"></i> Seasonal Planting Calendars</li>
+                            <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 text-amber-500 mr-2"></i> Pest and Weed Management Protocols</li>
+                            <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 text-amber-500 mr-2"></i> Video Tutorials for Complex Tasks</li>
+                        </ul>
+                        <a href="#contact" class="mt-6 inline-flex items-center text-teal-600 hover:text-amber-600 font-medium">
+                            Access Free Samples <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i>
+                        </a>
+                    </div>
+                    
+                    <!-- AI Chatbot Mockup -->
+                    <div class="p-8 bg-white rounded-2xl shadow-xl border border-teal-300/50">
+                        <i data-lucide="message-square-text" class="w-10 h-10 text-teal-600 mb-4"></i>
+                        <h3 class="text-2xl font-bold mb-3 text-teal-900">24/7 AI Chat Assistant</h3>
+
+                        <div id="chat-mockup" class="h-64 bg-slate-50 border border-slate-200 rounded-lg p-3 overflow-y-auto space-y-3 mb-4">
+                            <!-- Bot Message 1 -->
+                            <div class="flex justify-start">
+                                <div class="bg-teal-100 p-3 rounded-xl rounded-tl-none text-sm text-teal-900 max-w-[80%] shadow-sm">
+                                    Hello! I am TerraBot. How can I help you optimize your plant's growth today?
+                                </div>
+                            </div>
+                            <!-- User Message 1 -->
+                            <div class="flex justify-end">
+                                <div class="bg-green-200 p-3 rounded-xl rounded-br-none text-sm text-green-900 max-w-[80%] shadow-sm">
+                                    What is the best pH range for growing blueberries?
+                                </div>
+                            </div>
+                             <!-- Bot Message 2 -->
+                            <div class="flex justify-start">
+                                <div class="bg-teal-100 p-3 rounded-xl rounded-tl-none text-sm text-teal-900 max-w-[80%] shadow-sm">
+                                    Blueberries thrive in highly acidic soil, typically within a pH range of **4.0 to 5.5**. I can suggest ways to naturally lower your soil pH if needed!
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex space-x-2">
+                            <input type="text" placeholder="Ask TerraBot a question..." 
+                                class="w-full px-4 py-2 border border-slate-300 rounded-lg bg-slate-100 text-slate-900 focus:ring-teal-500 focus:border-teal-500 transition duration-150">
+                            <button class="bg-teal-600 p-2 rounded-lg text-white hover:bg-teal-700 transition">
+                                <i data-lucide="send" class="w-6 h-6"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Form Section -->
+        <section id="contact" class="py-20">
+            <div class="max-w-xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-4xl font-bold text-center mb-6 text-teal-900">Contact Our Experts</h2>
+                <p class="text-center text-xl text-green-800/80 mb-10">
+                    Have a custom nursery or agricultural project? Get in touch!
+                </p>
+
+                <form class="space-y-6 bg-white p-8 rounded-xl shadow-2xl border border-teal-300/50">
+                    <div>
+                        <label for="name" class="block text-sm font-medium text-teal-900 mb-1">Your Name</label>
+                        <input type="text" id="name" name="name" required
+                               class="w-full px-4 py-2 border border-slate-300 rounded-lg bg-slate-100 text-teal-900 transition duration-150">
+                    </div>
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-teal-900 mb-1">Email Address</label>
+                        <input type="email" id="email" name="email" required
+                               class="w-full px-4 py-2 border border-slate-300 rounded-lg bg-slate-100 text-teal-900 transition duration-150">
+                    </div>
+                    <div>
+                        <label for="details" class="block text-sm font-medium text-teal-900 mb-1">Project Details</label>
+                        <textarea id="details" name="details" rows="4" required
+                                  class="w-full px-4 py-2 border border-slate-300 rounded-lg bg-slate-100 text-teal-900 transition duration-150"></textarea>
+                    </div>
+                    <button type="submit" class="cta-button w-full py-3 bg-amber-600 text-white font-bold rounded-xl hover:bg-amber-700 transition duration-150 shadow-lg shadow-amber-500/50">
+                        Send Inquiry <i data-lucide="mail" class="w-5 h-5 inline-block ml-2"></i>
+                    </button>
+                    <!-- Mock Success Message Area (JS functionality below) -->
+                    <div id="status-message" class="hidden mt-4 p-3 rounded-lg text-center text-sm font-medium bg-green-500/20 text-green-600"></div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-300/50 mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <!-- Brand Info -->
+                <div>
+                    <h4 class="text-xl font-extrabold text-teal-600 mb-3">TerraSense</h4>
+                    <p class="text-sm text-green-800/80">AI-Powered Growth, Guaranteed.</p>
+                </div>
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-lg font-semibold text-teal-900 mb-3">Services</h4>
+                    <ul class="space-y-2 text-sm text-slate-700">
+                        <li><a href="#detection" class="hover:text-teal-600 transition">AI Detection</a></li>
+                        <li><a href="#sales" class="hover:text-teal-600 transition">Plant Sales</a></li>
+                        <li><a href="#support" class="hover:text-teal-600 transition">Chatbot & Guide</a></li>
+                    </ul>
+                </div>
+                <!-- Contact Info -->
+                <div>
+                    <h4 class="text-lg font-semibold text-teal-900 mb-3">Support</h4>
+                    <ul class="space-y-2 text-sm text-slate-700">
+                        <li><i data-lucide="mail" class="w-4 h-4 inline-block mr-2"></i>support@terrasense.com</li>
+                        <li><i data-lucide="phone" class="w-4 h-4 inline-block mr-2"></i>(555) 555-GROW</li>
+                    </ul>
+                </div>
+                <!-- Social Links -->
+                <div>
+                    <h4 class="text-lg font-semibold text-teal-900 mb-3">Connect</h4>
+                    <div class="flex space-x-4 text-slate-700">
+                        <a href="#" aria-label="Twitter" class="hover:text-teal-600 transition"><i data-lucide="twitter" class="w-6 h-6"></i></a>
+                        <a href="#" aria-label="Instagram" class="hover:text-teal-600 transition"><i data-lucide="instagram" class="w-6 h-6"></i></a>
+                        <a href="#" aria-label="LinkedIn" class="hover:text-teal-600 transition"><i data-lucide="linkedin" class="w-6 h-6"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Copyright -->
+            <div class="mt-10 pt-6 border-t border-slate-300/80 text-center">
+                <p class="text-sm text-slate-600">&copy; 2025 TerraSense. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Interactivity -->
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Mobile Menu Toggle Logic
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                if (window.innerWidth < 768) {
+                     document.getElementById('mobile-menu').classList.add('hidden');
+                }
+            });
+        });
+
+        // Mock AI Disease Detection Logic
+        const uploadInput = document.getElementById('plant-image-upload');
+        const detectionArea = document.getElementById('detection-area');
+        const detectButton = document.getElementById('detect-button');
+        const resultDiv = document.getElementById('detection-result');
+        let fileUploaded = false;
+
+        // Click handler for the dashed area
+        detectionArea.addEventListener('click', () => {
+            uploadInput.click();
+        });
+
+        // Handle file selection
+        uploadInput.addEventListener('change', (e) => {
+            if (e.target.files.length > 0) {
+                fileUploaded = true;
+                detectButton.disabled = false;
+                resultDiv.classList.add('hidden'); // Hide old result
+                detectionArea.innerHTML = `<i data-lucide="leaf" class="w-12 h-12 text-green-600 mx-auto mb-3"></i><p class="text-green-800 font-medium">Image Loaded: ${e.target.files[0].name}</p>`;
+                lucide.createIcons();
+            } else {
+                fileUploaded = false;
+                detectButton.disabled = true;
+            }
+        });
+
+        // Handle detection button click (Mock analysis)
+        detectButton.addEventListener('click', () => {
+            if (fileUploaded) {
+                detectButton.innerHTML = 'Analyzing...';
+                detectButton.disabled = true;
+                resultDiv.classList.add('hidden');
+
+                // Simulate processing delay
+                setTimeout(() => {
+                    detectButton.innerHTML = 'Analysis Complete!';
+                    resultDiv.classList.remove('hidden');
+                    detectButton.disabled = false;
+                    
+                    // Reset button text after a moment
+                    setTimeout(() => {
+                        detectButton.innerHTML = 'Analyze Image';
+                        lucide.createIcons();
+                    }, 2000);
+
+                }, 2500);
+            }
+        });
+
+
+        // Form Submission Logic (Mock)
+        document.querySelector('#contact form').addEventListener('submit', function(event) {
+            event.preventDefault(); 
+            
+            const form = event.target;
+            const statusMessage = document.getElementById('status-message');
+            
+            const submitButton = form.querySelector('button[type="submit"]');
+            submitButton.disabled = true;
+            submitButton.innerHTML = 'Sending...';
+
+            // Simulate an API call delay
+            setTimeout(() => {
+                // Mock success
+                statusMessage.textContent = 'Success! We have received your inquiry and will contact you shortly.';
+                statusMessage.classList.remove('hidden', 'bg-red-500/20', 'text-red-300');
+                statusMessage.classList.add('bg-green-500/20', 'text-green-600');
+                
+                form.reset();
+                
+                // Reset button state
+                submitButton.disabled = false;
+                submitButton.innerHTML = 'Send Inquiry <i data-lucide="mail" class="w-5 h-5 inline-block ml-2"></i>';
+                lucide.createIcons(); 
+
+                // Hide message after 5 seconds
+                setTimeout(() => {
+                    statusMessage.classList.add('hidden');
+                }, 5000);
+
+            }, 1500);
+        });
+    </script>
+</body>
+</html>
